@@ -1,0 +1,504 @@
+[33mcommit f58f409f61173815d45e6e4d5897830cf8eb05c6[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;33mtag: [m[1;33mv1[m[33m)[m
+Author: Ideal developer <shambishnoi75@gmail.com>
+Date:   Thu Dec 12 15:52:58 2024 +0530
+
+    Latest Design Updated Dahbaord
+
+[1mdiff --git a/.editorconfig b/.editorconfig[m
+[1mnew file mode 100644[m
+[1mindex 0000000..8f0de65[m
+[1m--- /dev/null[m
+[1m+++ b/.editorconfig[m
+[36m@@ -0,0 +1,18 @@[m
+[32m+[m[32mroot = true[m
+[32m+[m
+[32m+[m[32m[*][m
+[32m+[m[32mcharset = utf-8[m
+[32m+[m[32mend_of_line = lf[m
+[32m+[m[32mindent_size = 4[m
+[32m+[m[32mindent_style = space[m
+[32m+[m[32minsert_final_newline = true[m
+[32m+[m[32mtrim_trailing_whitespace = true[m
+[32m+[m
+[32m+[m[32m[*.md][m
+[32m+[m[32mtrim_trailing_whitespace = false[m
+[32m+[m
+[32m+[m[32m[*.{yml,yaml}][m
+[32m+[m[32mindent_size = 2[m
+[32m+[m
+[32m+[m[32m[docker-compose.yml][m
+[32m+[m[32mindent_size = 4[m
+[1mdiff --git a/.env.example b/.env.example[m
+[1mnew file mode 100644[m
+[1mindex 0000000..eb3c0fd[m
+[1m--- /dev/null[m
+[1m+++ b/.env.example[m
+[36m@@ -0,0 +1,64 @@[m
+[32m+[m[32mAPP_NAME=Laravel[m
+[32m+[m[32mAPP_ENV=local[m
+[32m+[m[32mAPP_KEY=[m
+[32m+[m[32mAPP_DEBUG=true[m
+[32m+[m[32mAPP_TIMEZONE=UTC[m
+[32m+[m[32mAPP_URL=http://localhost[m
+[32m+[m
+[32m+[m[32mAPP_LOCALE=en[m
+[32m+[m[32mAPP_FALLBACK_LOCALE=en[m
+[32m+[m[32mAPP_FAKER_LOCALE=en_US[m
+[32m+[m
+[32m+[m[32mAPP_MAINTENANCE_DRIVER=file[m
+[32m+[m[32m# APP_MAINTENANCE_STORE=database[m
+[32m+[m
+[32m+[m[32mBCRYPT_ROUNDS=12[m
+[32m+[m
+[32m+[m[32mLOG_CHANNEL=stack[m
+[32m+[m[32mLOG_STACK=single[m
+[32m+[m[32mLOG_DEPRECATIONS_CHANNEL=null[m
+[32m+[m[32mLOG_LEVEL=debug[m
+[32m+[m
+[32m+[m[32mDB_CONNECTION=sqlite[m
+[32m+[m[32m# DB_HOST=127.0.0.1[m
+[32m+[m[32m# DB_PORT=3306[m
+[32m+[m[32m# DB_DATABASE=lms[m
+[32m+[m[32m# DB_USERNAME=root[m
+[32m+[m[32m# DB_PASSWORD=[m
+[32m+[m
+[32m+[m[32mSESSION_DRIVER=database[m
+[32m+[m[32mSESSION_LIFETIME=120[m
+[32m+[m[32mSESSION_ENCRYPT=false[m
+[32m+[m[32mSESSION_PATH=/[m
+[32m+[m[32mSESSION_DOMAIN=null[m
+[32m+[m
+[32m+[m[32mBROADCAST_CONNECTION=log[m
+[32m+[m[32mFILESYSTEM_DISK=local[m
+[32m+[m[32mQUEUE_CONNECTION=database[m
+[32m+[m
+[32m+[m[32mCACHE_STORE=database[m
+[32m+[m[32mCACHE_PREFIX=[m
+[32m+[m
+[32m+[m[32mMEMCACHED_HOST=127.0.0.1[m
+[32m+[m
+[32m+[m[32mREDIS_CLIENT=phpredis[m
+[32m+[m[32mREDIS_HOST=127.0.0.1[m
+[32m+[m[32mREDIS_PASSWORD=null[m
+[32m+[m[32mREDIS_PORT=6379[m
+[32m+[m
+[32m+[m[32mMAIL_MAILER=log[m
+[32m+[m[32mMAIL_HOST=127.0.0.1[m
+[32m+[m[32mMAIL_PORT=2525[m
+[32m+[m[32mMAIL_USERNAME=null[m
+[32m+[m[32mMAIL_PASSWORD=null[m
+[32m+[m[32mMAIL_ENCRYPTION=null[m
+[32m+[m[32mMAIL_FROM_ADDRESS="hello@example.com"[m
+[32m+[m[32mMAIL_FROM_NAME="${APP_NAME}"[m
+[32m+[m
+[32m+[m[32mAWS_ACCESS_KEY_ID=[m
+[32m+[m[32mAWS_SECRET_ACCESS_KEY=[m
+[32m+[m[32mAWS_DEFAULT_REGION=us-east-1[m
+[32m+[m[32mAWS_BUCKET=[m
+[32m+[m[32mAWS_USE_PATH_STYLE_ENDPOINT=false[m
+[32m+[m
+[32m+[m[32mVITE_APP_NAME="${APP_NAME}"[m
+[1mdiff --git a/.gitattributes b/.gitattributes[m
+[1mnew file mode 100644[m
+[1mindex 0000000..fcb21d3[m
+[1m--- /dev/null[m
+[1m+++ b/.gitattributes[m
+[36m@@ -0,0 +1,11 @@[m
+[32m+[m[32m* text=auto eol=lf[m
+[32m+[m
+[32m+[m[32m*.blade.php diff=html[m
+[32m+[m[32m*.css diff=css[m
+[32m+[m[32m*.html diff=html[m
+[32m+[m[32m*.md diff=markdown[m
+[32m+[m[32m*.php diff=php[m
+[32m+[m
+[32m+[m[32m/.github export-ignore[m
+[32m+[m[32mCHANGELOG.md export-ignore[m
+[32m+[m[32m.styleci.yml export-ignore[m
+[1mdiff --git a/.gitignore b/.gitignore[m
+[1mnew file mode 100644[m
+[1mindex 0000000..46340a6[m
+[1m--- /dev/null[m
+[1m+++ b/.gitignore[m
+[36m@@ -0,0 +1,20 @@[m
+[32m+[m[32m/.phpunit.cache[m
+[32m+[m[32m/node_modules[m
+[32m+[m[32m/public/build[m
+[32m+[m[32m/public/hot[m
+[32m+[m[32m/public/storage[m
+[32m+[m[32m/storage/*.key[m
+[32m+[m[32m/vendor[m
+[32m+[m[32m.env[m
+[32m+[m[32m.env.backup[m
+[32m+[m[32m.env.production[m
+[32m+[m[32m.phpactor.json[m
+[32m+[m[32m.phpunit.result.cache[m
+[32m+[m[32mHomestead.json[m
+[32m+[m[32mHomestead.yaml[m
+[32m+[m[32mauth.json[m
+[32m+[m[32mnpm-debug.log[m
+[32m+[m[32myarn-error.log[m
+[32m+[m[32m/.fleet[m
+[32m+[m[32m/.idea[m
+[32m+[m[32m/.vscode[m
+[1mdiff --git a/app/Helpers/AuthHelper.php b/app/Helpers/AuthHelper.php[m
+[1mnew file mode 100644[m
+[1mindex 0000000..ca713d0[m
+[1m--- /dev/null[m
+[1m+++ b/app/Helpers/AuthHelper.php[m
+[36m@@ -0,0 +1,25 @@[m
+[32m+[m[32m<?php[m
+[32m+[m
+[32m+[m[32muse Illuminate\Support\Facades\Auth;[m
+[32m+[m[32muse Illuminate\Support\Facades\Route;[m
+[32m+[m
+[32m+[m[32mfunction user()[m
+[32m+[m[32m{[m
+[32m+[m[32m    foreach (config('auth.guards') as $guardName => $guardConfig) {[m
+[32m+[m[32m        if ($user = Auth::guard($guardName)->user()) {[m
+[32m+[m[32m            return $user;[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m[32m    return null;[m
+[32m+[m[32m}[m
+[32m+[m[32mfunction check()[m
+[32m+[m[32m{[m
+[32m+[m[32m    foreach (config('auth.guards') as $guardName => $guardConfig) {[m
+[32m+[m[32m        if ($user = Auth::guard($guardName)->check()) {[m
+[32m+[m[32m            return true;[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m[32m    return false;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m
+[1mdiff --git a/app/Helpers/Helper.php b/app/Helpers/Helper.php[m
+[1mnew file mode 100644[m
+[1mindex 0000000..40eab2a[m
+[1m--- /dev/null[m
+[1m+++ b/app/Helpers/Helper.php[m
+[36m@@ -0,0 +1,236 @@[m
+[32m+[m[32m<?php[m
+[32m+[m[32muse App\Models\Menus;[m
+[32m+[m[32muse App\Mail\Email;[m
+[32m+[m[32muse App\Models\Setting;[m
+[32m+[m[32muse App\Models\Slider;[m
+[32m+[m[32muse App\Models\WebData;[m
+[32m+[m[32muse Illuminate\Support\Facades\Route;[m
+[32m+[m
+[32m+[m[32mfunction getFirst50Words($content)[m
+[32m+[m[32m{[m
+[32m+[m[32m    // Split the content into words by spaces[m
+[32m+[m[32m    $words = preg_split('/\s+/', $content, -1, PREG_SPLIT_NO_EMPTY);[m
+[32m+[m
+[32m+[m[32m    // Get the first 50 words[m
+[32m+[m[32m    $first50Words = array_slice($words, 0, 50);[m
+[32m+[m
+[32m+[m[32m    // Join them back into a string[m
+[32m+[m[32m    $shortContent = implode(' ', $first50Words);[m
+[32m+[m
+[32m+[m[32m    return $shortContent;[m
+[32m+[m[32m}[m
+[32m+[m[32mif (!function_exists('df')) {[m
+[32m+[m[32m    function df($date, $format)[m
+[32m+[m[32m    {[m
+[32m+[m[32m        try {[m
+[32m+[m[32m            $dateTime = new DateTime($date);[m
+[32m+[m[32m            return $dateTime->format($format);[m
+[32m+[m[32m        } catch (Exception $e) {[m
+[32m+[m[32m            return $date;[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+[32m+[m[32mfunction make_slug($string)[m
+[32m+[m[32m{[m
+[32m+[m[32m    $slug = preg_replace('/\s+/u', '-', trim($string));[m
+[32m+[m[32m    $slug = str_replace("/", "", $slug);[m
+[32m+[m[32m    $slug = str_replace("?", "", $slug);[m
+[32m+[m[32m    return strtolower($slug);[m
+[32m+[m[32m}[m
+[32m+[m[32m// if (!function_exists('ce')) {[m
+[32m+[m[32m//     function ce($message)[m
+[32m+[m[32m//     {[m
+[32m+[m[32m//         $routeAction = Route::currentRouteAction();[m
+[32m+[m[32m//         list($controller, $method) = explode('@', $routeAction);[m
+[32m+[m[32m//         $controllerName = class_basename($controller);[m
+[32m+[m[32m//         $user = user();[m
+[32m+[m[32m//         $userDetails = $user ? $user->name . ' (' . $user->email . ')' : 'Guest';[m
+[32m+[m[32m//         \Log::channel('ce')->error('Error in ' . $controllerName, [[m
+[32m+[m[32m//             'user' => $userDetails,[m
+[32m+[m[32m//             'message' => $message,[m
+[32m+[m[32m//             'ip' => request()->ip(),[m
+[32m+[m[32m//             'url' => request()->fullUrl(),[m
+[32m+[m[32m//         ]);[m
+[32m+[m[32m//     }[m
+[32m+[m[32m// }[m
+[32m+[m
+[32m+[m[32mif (!function_exists('ce')) {[m
+[32m+[m[32m    function ce($message)[m
+[32m+[m[32m    {[m
+[32m+[m[32m        // Get the current route action[m
+[32m+[m[32m        $routeAction = Route::currentRouteAction();[m
+[32m+[m[32m        list($controller, $method) = explode('@', $routeAction);[m
+[32m+[m[32m        $controllerName = class_basename($controller);[m
+[32m+[m
+[32m+[m[32m        // Get user details[m
+[32m+[m[32m        $user = user();[m
+[32m+[m[32m        $userDetails = $user ? $user->name . ' (' . $user->email . ')' : 'Guest';[m
+[32m+[m
+[32m+[m[32m        // Get the error information[m
+[32m+[m[32m        $debugTrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);[m
+[32m+[m[32m        $errorLine = isset($debugTrace[1]['line']) ? $debugTrace[1]['line'] : 'Unknown Line';[m
+[32m+[m[32m        $errorFunction = isset($debugTrace[1]['function']) ? $debugTrace[1]['function'] : 'Unknown Function';[m
+[32m+[m
+[32m+[m[32m        // Log the error[m
+[32m+[m[32m        \Log::channel('ce')->error('Error in ' . $controllerName . ' at line ' . $errorLine . ' in function ' . $errorFunction, [[m
+[32m+[m[32m            'user' => $userDetails,[m
+[32m+[m[32m            'message' => $message,[m
+[32m+[m[32m            'ip' => request()->ip(),[m
+[32m+[m[32m            'url' => request()->fullUrl(),[m
+[32m+[m[32m        ]);[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mif (!function_exists('withSuccess')) {[m
+[32m+[m[32m    function withSuccess($action = "")[m
+[32m+[m[32m    {[m
+[32m+[m[32m        $action = strtolower($action);[m
+[32m+[m[32m        switch ($action) {[m
+[32m+[m[32m            case 'create':[m
+[32m+[m[32m                $defaultMessage = 'Record Added Successfully';[m
+[32m+[m[32m                break;[m
+[32m+[m[32m            case 'update':[m
+[32m+[m[32m                $defaultMessage = 'Record Updated Successfully';[m
+[32m+[m[32m                break;[m
+[32m+[m[32m            case 'delete':[m
+[32m+[m[32m                $defaultMessage = 'Record Deleted Successfully';[m
+[32m+[m[32m                break;[m
+[32m+[m[32m            default:[m
+[32m+[m[32m                $defaultMessage = 'Operation Successful';[m
+[32m+[m[32m                break;[m
+[32m+[m[32m        }[m
+[32m+[m[32m        return back()->with("success", $defaultMessage);[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+[32m+[m[32mif (!function_exists('returnSuccess')) {[m
+[32m+[m[32m    function returnSuccess($action)[m
+[32m+[m[32m    {[m
+[32m+[m[32m        return new \App\Helpers\SuccessHandler($action);[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mfunction menu()[m
+[32m+[m[32m{[m
+[32m+[m[32m    if (user()->instance() == "admin" && user()->dflt == true) {[m
+[32m+[m[32m        $filterMenus = Menus::where(function ($query) {[m
+[32m+[m[32m            $query->where('nav', '!=', 1)[m
+[32m+[m[32m                ->where('nextside', '!=', 1);[m
+[32m+[m[32m        })->get();[m
+[32m+[m[32m        return $filterMenus;[m
+[32m+[m[32m    }[m
+[32m+[m[32m    $menus = Menus::where(function ($query) {[m
+[32m+[m[32m        $query->where('nav', '!=', 1)[m
+[32m+[m[32m            ->where('nextside', '!=', 1);[m
+[32m+[m[32m    })->get();[m
+[32m+[m[32m    $filteredMenus = $menus->filter(function ($menu) {[m
+[32m+[m[32m        $menupr = $menu->permissions()[m
+[32m+[m[32m            ->where('uid', user()->id)[m
+[32m+[m[32m            ->where('user_type', user()->instance())[m
+[32m+[m[32m            ->where('read', true)[m
+[32m+[m[32m            ->exists();[m
+[32m+[m[32m        if ($menu->collapse == 1) {[m
+[32m+[m[32m            $submenuReadPermissionCount = $menu->submenu()[m
+[32m+[m[32m                ->whereHas('permissions', function ($query) {[m
+[32m+[m[32m                    $query->where('uid', user()->id)[m
+[32m+[m[32m                        ->where('user_type', user()->instance())[m
+[32m+[m[32m                        ->where('read', true);[m
+[32m+[m[32m                })->count();[m
+[32m+[m[32m            return $menupr && $submenuReadPermissionCount > 0;[m
+[32m+[m[32m        } else {[m
+[32m+[m[32m            return $menupr;[m
+[32m+[m[32m        }[m
+[32m+[m[32m    });[m
+[32m+[m[32m    $dfltmenu = Menus::where('dflt', 1)->get();[m
+[32m+[m[32m    $filterMenus = $filteredMenus->merge($dfltmenu);[m
+[32m+[m[32m    return $filterMenus;[m
+[32m+[m[32m}[m
+[32m+[m[32mfunction navmenu()[m
+[32m+[m[32m{[m
+[32m+[m
+[32m+[m[32m    if (user()->instance() == "admin" && user()->dflt == true) {[m
+[32m+[m[32m        $filterMenus = Menus::where(function ($query) {[m
+[32m+[m[32m            $query->where('nav', 1);[m
+[32m+[m[32m        })->get();[m
+[32m+[m[32m        return $filterMenus;[m
+[32m+[m[32m    }[m
+[32m+[m[32m    $menus = Menus::where(function ($query) {[m
+[32m+[m[32m        $query->where('nav', 1);[m
+[32m+[m[32m    })->get();[m
+[32m+[m[32m    $filterMenus = $menus->filter(function ($menu) {[m
+[32m+[m[32m        $menupr = $menu->permissions()[m
+[32m+[m[32m            ->where('uid', user()->id)[m
+[32m+[m[32m            ->where('user_type', user()->instance())[m
+[32m+[m[32m            ->where('read', true)[m
+[32m+[m[32m            ->exists();[m
+[32m+[m[32m        if ($menu->collapse == 1) {[m
+[32m+[m[32m            $submenuReadPermissionCount = $menu->submenu()[m
+[32m+[m[32m                ->whereHas('permissions', function ($query) {[m
+[32m+[m[32m                    $query->where('uid', user()->id)[m
+[32m+[m[32m                        ->where('user_type', user()->instance())[m
+[32m+[m[32m                        ->where('read', true);[m
+[32m+[m[32m                })->count();[m
+[32m+[m[32m            return $menupr && $submenuReadPermissionCount > 0;[m
+[32m+[m[32m        } else {[m
+[32m+[m[32m            return $menupr;[m
+[32m+[m[32m        }[m
+[32m+[m[32m    });[m
+[32m+[m[32m    return $filterMenus;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mfunction sidemenu()[m
+[32m+[m[32m{[m
+[32m+[m
+[32m+[m[32m    if (user()->instance() == "admin" && user()->dflt == true) {[m
+[32m+[m[32m        $filterMenus = Menus::where('nav', 1)[m
+[32m+[m[32m            ->orWhere('nextside', 1)[m
+[32m+[m[32m            ->get();[m
+[32m+[m[32m        return $filterMenus;[m
+[32m+[m[32m    }[m
+[32m+[m[32m    $menus = Menus::where('nav', 1)[m
+[32m+[m[32m        ->orWhere('nextside', 1)[m
+[32m+[m[32m        ->get();[m
+[32m+[m[32m    ;[m
+[32m+[m[32m    $filterMenus = $menus->filter(function ($menu) {[m
+[32m+[m[32m        $menupr = $menu->permissions()[m
+[32m+[m[32m            ->where('uid', user()->id)[m
+[32m+[m[32m            ->where('user_type', user()->instance())[m
+[32m+[m[32m            ->where('read', true)[m
+[32m+[m[32m            ->exists();[m
+[32m+[m[32m        if ($menu->collapse == 1) {[m
+[32m+[m[32m            $submenuReadPermissionCount = $menu->submenu()[m
+[32m+[m[32m                ->whereHas('permissions', function ($query) {[m
+[32m+[m[32m                    $query->where('uid', user()->id)[m
+[32m+[m[32m                        ->where('user_type', user()->instance())[m
+[32m+[m[32m                        ->where('read', true);[m
+[32m+[m[32m                })->count();[m
+[32m+[m[32m            return $menupr && $submenuReadPermissionCount > 0;[m
+[32m+[m[32m        }[m
+[32m+[m[32m    });[m
+[32m+[m[32m    return $filterMenus;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m[32mfunction webData()[m
+[32m+[m[32m{[m
+[32m+[m[32m    $setting = WebData::with(['logo', 'favicon'])->first() ?? new WebData();[m
+[32m+[m[32m    return $setting;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m[32mfunction setting($name)[m
+[32m+[m[32m{[m
+[32m+[m[32m    $setting = Setting::where('name', $name)->first();[m
+[32m+[m[32m    return $setting ? $setting->value : null;[m
+[32m+[m[32m}[m
+[32m+[m[32mfunction lowerUniqueIds()[m
+[32m+[m[32m{[m
+[32m+[m[32m    return strtolower(substr(md5(uniqid(rand(), true)), 0, 30));[m
+[32m+[m[32m}[m
+[32m+[m[32m//------Mail------//[m
+[32m+[m[32mif (!function_exists('kvMail')) {[m
+[32m+[m[32m    function kvMail($tomail, $data = '', $subject = '', $template = '', $htmlcontent = '')[m
+[32m+[m[32m    {[m
+[32m+[m[32m        Mail::to($tomail)->queue(new Email($data, $subject, $template, $htmlcontent));[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+[32m+[m
+[1mdiff --git a/app/Helpers/SuccessHandler.php b/app/Helpers/SuccessHandler.php[m
+[1mnew file mode 100644[m
+[1mindex 0000000..9d40fea[m
+[1m--- /dev/null[m
+[1m+++ b/app/Helpers/SuccessHandler.php[m
+[36m@@ -0,0 +1,45 @@[m
+[32m+[m[32m<?php[m
+[32m+[m
+[32m+[m[32mnamespace App\Helpers;[m
+[32m+[m
+[32m+[m[32muse Illuminate\Support\Facades\Redirect;[m
+[32m+[m
+[32m+[m[32mclass SuccessHandler[m
+[32m+[m[32m{[m
+[32m+[m[32m    protected $action;[m
+[32m+[m[32m    protected $route;[m
+[32m+[m
+[32m+[m[32m    public function __construct($action)[m
+[32m+[m[32m    {[m
+[32m+[m[32m        $this->action = strtolower($action);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    public function getMessage()[m
+[32m+[m[32m    {[m
+[32m+[m[32m        switch ($this->action) {[m
+[32m+[m[32m            case 'create':[m
+[32m+[m[32m                return 'Record Added Successfully';[m
+[32m+[m[32m            case 'update':[m
+[32m+[m[32m                return 'Record Updated Successfully';[m
+[32m+[m[32m            case 'delete':[m
+[32m+[m[32m                return 'Record Deleted Successfully';[m
+[32m+[m[32m            default:[m
+[32m+[m[32m                return $this->action ?? 'Operation Successful';[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    public function redirect($route)[m
+[32m+[m[32m    {[m
+[32m+[m[32m        $this->route = $route;[m
+[32m+[m[32m        return $this; // Allow chaining[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    public function execute()[m
+[32m+[m[32m    {[m
+[32m+[m[32m        if ($this->route) {[m
+[32m+[m[32m            return Redirect::route($this->route)->with('success', $this->getMessage());[m
+[32m+[m[32m        }[m
+[32m+[m
+[32m+[m[32m        return Redirect::back()->with('success', [$this->getMessage()]);[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+[1mdiff --git a/app/Http/Controllers/Controller.php b/app/Http/Controllers/Controller.php[m
+[1mnew file mode 100644[m
+[1mindex 0000000..8677cd5[m
+[1m--- /dev/null[m
+[1m+++ b/app/Http/Controllers/Controller.php[m
+[36m@@ -0,0 +1,8 @@[m
+[32m+[m[32m<?php[m
+[32m+[m
+[32m+[m[32mnamespace App\Http\Controllers;[m
+[32m+[m
+[32m+[m[32mabstract class Controller[m
+[32m+[m[32m{[m
+[32m+[m[32m    //[m
+[32m+[m[32m}[m
+[1mdiff --git a/app/Http/Controllers/Upload/UploadController.php b/app/Http/Controllers/Upload/UploadController.php[m
+[1mnew file mode 100644[m
+[1mindex 0000000..17e9604[m
+[1m--- /dev/null[m
+[1m+++ b/app/Http/Controllers/Upload/UploadController.php[m
+[36m@@ -0,0 +1,233 @@[m
+[32m+[m[32m<?php[m
+[32m+[m
+[32m+[m[32mnamespace App\Http\Controllers\Upload;[m
+[32m+[m
+[32m+[m[32muse App\Http\Controllers\Controller;[m
+[32m+[m[32muse App\Models\Upload;[m
+[32m+[m[32muse File;[m
+[32m+[m[32muse Illuminate\Http\Request;[m
+[32m+[m[32muse Illuminate\Support\Facades\Storage;[m
+[32m+[m[32muse Illuminate\Validation\ValidationException;[m
+[32m+[m
+[32m+[m[32mclass UploadController extends Controller[m
+[32m+[m[32m{[m
+[32m+[m[32m    public function view()[m
+[32m+[m[32m    {[m
+[32m+[m[32m        session()->put('referring_route', request()->route()->getName());[m
+[32m+[m[32m        if (auth

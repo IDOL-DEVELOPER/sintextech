@@ -1,0 +1,48 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ rootNamespace }}Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
+
+class {{ class }} extends Controller
+{
+   public function view(){
+    session()->put('referring_route', request()->route()->getName());
+    return view('');
+   }
+    public function action(Request $request)
+    {
+         $request->validate([
+            "action" => 'required|in:create,update,delete'
+        ]);
+           $action = $request->action;
+        switch ($action) {
+                case 'create':
+                    if (check() && user()->hasPermission('write')) {
+                        return $this->create($request);
+                    } else {
+                        ce("Unautorize Permission Access Not Allowed For Write");
+                        return back()->withErrors(["error"], "Unautorize Permission Access Not Allowed");
+                    }
+                case 'update':
+                    if (check() && user()->hasPermission('update')) {
+                        return $this->update($request);
+                    } else {
+                        ce("Unautorize Permission Access Not Allowed For Update");
+                        return back()->withErrors(["error"], "Unautorize Permission Access Not Allowed");
+                    }
+                case 'delete':
+                    if (check() && user()->hasPermission('delete')) {
+                        return $this->delete($request);
+                    } else {
+                        ce("Unautorize Permission Access Not Allowed For Delete");
+                        return back()->withErrors(["error"], "Unautorize Permission Access Not Allowed");
+                    }
+                default:
+                    ce("Invalid action");
+                    return back()->withErrors(['error' => 'Invalid action']);
+            }
+    }
+}
